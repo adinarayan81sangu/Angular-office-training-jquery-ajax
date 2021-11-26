@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+
+            $("#submit").click(function () {
+                $.ajax({
+                    type: "GET",
+                    url: "https://reqres.in/api/users",
+                    dataType: "json",
+                    contentType: "application/json;charset=utf-8",
+                    success: function (obj) {
+                        // $("#table1 tr").remove();
+                        // $("#table1").append("<tr><th>page</th><th>per_page</th></tr>");
+
+                        // $("#table1").append("<tr><th>" + data.page + "</th><th>" + data.per_page + "</th></tr>");
+                        data = obj.data
+                        console.log(data);
+                        for (i = 0; i<data.length; i++) {
+                            $("#table1").append("<tr><td>" + data[i].id + "</td><td>" + data[i].email + "</td><td>"+"<img src='"+data[i].avatar+"'>"+"</td></tr>");
+                        }
+                    }
+                });
+            });
+
+            $("#inpvalue").blur(function(){
+                let empid=$(this).val();
+                console.log(empid);
+                $.ajax({
+                    type: "GET",
+                    url: "https://reqres.in/api/users/"+empid,
+                    dataType: "json",
+                    contentType: "application/json;charset=utf-8",
+                    success:function(obj){
+                        console.log(obj.data);
+                        data=obj.data;
+                      $('#table3').append("<tr><td>" + data.id+ "</td><td>" + data.first_name + "</td><td>"+ data.email+"</td><td>"+"<img src='"+data.avatar+"'>" +"</td></tr>")
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <form>
+        <table>
+            <tr>
+                <td>
+                    <input type="button" id="submit" value="Extract" />
+                </td>
+            </tr>
+        </table>
+        <table id="table1">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Image
+
+                </th>
+            </tr>
+
+        </table>
+        <div id="input">
+            <input type="text" id="inpvalue">
+        </div>
+        <table id="table3">
+                  <tr><th>id</th>
+                    <th>First name</th>
+                    <th>Email</th>
+                    <th>Image</th>
+                </tr>
+        </table>
+    </form>
+</body>
+
+</html>

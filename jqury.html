@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <script>
+        $(document).ready(
+            function(){
+                // $("div").hide();
+                // $('button').click(
+                //     function()
+                //     {
+                //     $('div').hide()
+                // });
+                $('div').dblclick(function(){
+                    $(this).hide();
+                });
+               $('#p1').hover(function(){
+                    $(this).hide();
+               });
+               $('#p2').hover(function(){
+                    $(this).hide();
+               });
+               $('.test').click(function(){
+                   $(this).hide();
+               });
+               $('#empno').mouseleave(function(){
+                   alert("welcome")
+               });
+               $('tr').hover(
+                   function(){
+                     $(this).css("background","#F1C40F");
+                   },function(){
+                    $(this).css("background","")
+                   }
+               );
+               $('.r1').hover(function(){
+                    $(this).addClass('r2');
+                    
+               },function(){
+                   $(this).removeClass('r2')
+               });
+            }
+        );
+    </script>
+    <style>
+        .r2{
+          font-size: 30px;
+          background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <button>Click</button>
+    <div><h1>This is my first jquery</h1> </div>
+    <div><h1>This is my first javascript</h1> </div>
+    <div><h1>This is my first Angular</h1> </div>
+    <div><h1>This is my first boostrap</h1> </div>
+    <p id="p1">This is my first jquery</p>
+    <p id="p2">This is my first boostrap</p>
+    <h2 class="test">hello hello hello hello</h2>
+    <h2 class="test">welcome welcome welcome</h2>
+    <h3  class="test">bye bye bye bye bye bye</h3>
+    <input type="text" id="empno">
+    <table>
+        <tr class="r1">
+            <td>Sno</td>
+            <td>EmpNo</td>
+            <td>Ename</td>
+            <td>EmRime</td>
+        </tr>
+        <tr class="r1">
+            <td>1</td>
+            <td>202128</td>
+            <td>Adi</td>
+            <td>9:28</td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    // var StateName;
+        $(function(){
+            $('#State').change(function(){
+           let StateName=$(this).val();
+        //    console.log(StateName);
+           $.ajax({
+            type: "GET",
+                    url: "http://localhost:3000/state-info",
+                    dataType: "json",
+                    contentType: "application/json;charset=utf-8",
+                    success:function(data){
+                        
+                        for(i=0;i<data.length;i++){
+                           
+                            if(data[i].state==StateName){
+                                
+                                city=data[i].city;
+                                
+                                let SateResult;
+                                for(i=0;i<city.length;i++){
+                                        
+                                        SateResult= SateResult+`<option>${city[i]}</option>`
+                                }
+                                $('#CityName').html(SateResult);
+
+                            }
+                        }
+                    }
+           })
+       });
+        
+        });
+     
+    </script>
+</head>
+<body>
+    
+        <label for="">Select state:</label>
+        <select name="State" id="State">
+         
+            <option value="Andhrapradesh" selected>Andhrapradesh</option>
+            <option value="Telangana">Telangana</option>
+            <option value="Bangalore">Bangalore</option>
+        </select>
+        <select name="" id="CityName">
+
+        </select>
+</body>
+</html>

@@ -1,0 +1,18 @@
+[
+    {
+        "empno":1,
+        "ename":"Adi",
+        "gender":"Male"
+    },
+    {
+        "empno":2,
+        "ename":"ketan",
+        "gender":"Male"
+    },
+    {
+        "empno":3,
+        "ename":"Lohi",
+        "gender":"Female"
+    }
+
+]

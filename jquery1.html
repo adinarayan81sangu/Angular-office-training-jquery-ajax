@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            // alert("hello")
+            $('#btnClick').click(function () {
+                // var e=document.getElementById("empno").value;//javaScriptcode we can write like this
+                var e = $("#empno").val();//we can write like in the jquery
+                console.log(e);
+                if (e == "") {
+                    $("#empno").css("background-color", "red");
+                    $("#empno").focus();
+
+                }
+            });
+        $("#datepicker").datepicker(
+            {
+                maxDate:0,
+                minDate:-3
+            },
+        );
+        $("#datepicker").change(function(){
+            $(this).datepicker()
+            console.log($(this).val());
+        })
+        });
+    </script>
+</head>
+
+<body>
+    <form action="">
+        <input type="text" id="empno">
+        <input type="button" value="button" id="btnClick">
+        <input type="text" id="datepicker">
+    </form>
+</body>
+
+</html>

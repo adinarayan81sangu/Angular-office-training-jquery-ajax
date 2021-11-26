@@ -1,0 +1,19 @@
+
+
+{
+    "state-info":  [
+          {
+              "state":"Telangana",
+              "city":["Hyderabad","karimnagar","Warangal"]
+          },
+          {
+              "state":"Bangalore",
+              "city":["Electronic city","Hebbal"]
+          },
+          {
+              "state":"Andhrapradesh",
+              "city":["vizag","karnool","Amaravathi"]
+          }
+         
+      ]
+  }

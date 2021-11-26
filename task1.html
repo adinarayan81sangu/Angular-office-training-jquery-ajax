@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        function postData() {
+            let error = "";
+            let name = document.getElementById('name1').value;
+            let email = document.getElementById('email1').value;
+            let number = document.getElementById('number1').value;
+            let city = document.getElementById('city1').value;
+            let terms = document.getElementById('terms1').checked;
+            let emailRegExp = new RegExp("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
+            let numberRegExp = new RegExp("([0-9]{10})");
+            if (name.trim().length == 0) {
+                error = error + "<h4>Please enter your name</h4>"
+            }
+            if (email.trim().length == 0) {
+                error = error + "<h4>Please enter your email</h4>"
+            }
+            else if (!emailRegExp.test(email)) {
+                error = error + "<h4>Your email is not valid</h4>"
+            }
+            if (number.trim().length == 0) {
+                error = error + "<h4>Please enter your phone number</h4>"
+            }
+            else if (!numberRegExp.test(number)) {
+                error = error + "<h4>Your phone number is not valid</h4>"
+            }
+            // if(city.length == 0) {
+            //     error = error + "<h4>Please enter your city</h4>"
+            // }
+            let temp = 0;
+            for (let i = 0; i < 2; i++) {
+                if (document.getElementsByName('gender')[i].checked == true)
+                    temp++
+            }
+            if (temp == 0) {
+                error = error + "<h4>Please select your gender</h4>"
+            }
+            if (terms == false) {
+                error = error + "<h4>Please accept terms and conditions</h4>"
+            }
+            document.getElementById('validation').innerHTML = error;
+            console.log(error);
+            if (error == "")
+                return true;
+            else
+                return false;
+
+        }
+    </script>
+</head>
+
+<body>
+    <form action="task2.html">
+        <label for="name">Enter name :</label>
+        <input type="text" name="name" id="name1">
+        <br>
+        <label for="email">Enter Email :</label>
+        <input type="email" name="email" id="email1">
+        <br>
+        <label for="number">Enter number : </label>
+        <input type="number" name="number" id="number1">
+        <br>
+        <label for="number">Select city :</label>
+        <select name="city" id="city1">
+            <option value="hyd">Hyderabad</option>
+            <option value="vij">Vijayawada</option>
+        </select>
+        <br>
+        <input type="checkbox" value="true" name="terms" id="terms1">
+        <span>Accept terms and conditions</span>
+        <br>
+        <label for="gender">Gender : </label>
+        <input type="radio" name="gender" id="gender1" value="male">MALE
+        <input type="radio" name="gender" id="gender2" value="female">FEMALE
+
+        <button type="submit" onclick="return postData();">Submit</button>
+    </form>
+
+    <div id="validation"></div>
+</body>
+
+</html>

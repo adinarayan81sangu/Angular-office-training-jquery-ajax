@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let TotalInHours;
+        let TotalInMinutes;
+        let TotalOutHours;
+        let TotalOutMinutes;
+        function INtime() {
+            let intime = document.getElementById("inTime").value;
+            let time = intime.split('T')[1];
+
+            let inthours = parseInt(time.split(':')[0]);
+            TotalInHours = inthours;
+            let intminutes = parseInt(time.split(':')[1]);
+            TotalInMinutes = intminutes;
+            console.log(intminutes);
+            console.log(inthours);
+            console.log(time);
+            if (inthours < 9) {
+                document.getElementById('erintime').innerHTML = "You came early"
+            }
+            else {
+                document.getElementById('erintime').innerHTML = "you came late by " + (inthours - 9) + "hours and" + (intminutes) + "minutes";
+            }
+
+        }
+
+        function outTime() {
+            let outTime = document.getElementById("OutTime").value;
+            let otime = outTime.split('T')[1];
+            console.log(otime);
+            let outhours = parseInt(otime.split(':')[0]);
+            TotalOutHours = outhours;
+            console.log(outhours);
+            let outminutes = parseInt(otime.split(':')[1]);
+            TotalOutMinutes = outminutes;
+            console.log(outminutes);
+            if (outhours < 18) {
+                document.getElementById('outerr').innerHTML = 'please take permission form your head';
+            } else {
+                document.getElementById('outerr').innerHTML = "happy journy "
+            }
+
+        }
+        function TotalTime(){
+                // console.log("---------------------");
+                // console.log(TotalInHours);
+                // document.getElementById('Totalmessage').innerHTML="Total working time is "+
+                if(TotalOutHours-TotalInHours>0){
+                    TotalaMinutes=TotalOutMinutes-TotalInMinutes;
+                    TotalHours=TotalOutHours-TotalInHours;
+                    if( TotalaMinutes<0){
+                        TotalHours= TotalHours - 1;
+                        TotalaMinutes= 60 + TotalaMinutes;
+                    }
+                    document.getElementById('Totalmessage').innerHTML="Total Working Hours is "+(TotalHours)+"and"+(TotalaMinutes)+"minutesl";
+                }
+             }
+    </script>
+</head>
+
+<body>
+    <form action="">
+        <label for="">EMPId:</label>
+        <input type="text">
+        <br><br>
+        <label for="">InTime:</label>
+        <input type="datetime-local" onblur="INtime()" name="inTime" id="inTime">
+        <span id="erintime"></span>
+        <br><br>
+        <label for="">OutTime:</label>
+        <input type="datetime-local" onblur="outTime()" name="OutTime" id="OutTime">
+        <span id="outerr"></span>
+        <br><br>
+        <button type="button" onclick="TotalTime()">Submit</button>
+        <br>
+        <span id="Totalmessage"></span>
+    </form>
+</body>
+
+</html>
